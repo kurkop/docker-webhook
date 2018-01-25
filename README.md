@@ -82,6 +82,17 @@ $ curl -X POST yourdomain.com:8555/my-super-safe-token
 
 This tool was built as a proof-of-concept and might not be completly secure. If you have any improvement suggestions please open up an issue.
 
+## Docker
+Run docker:
+```sh
+docker run -ti -p 8555:8555 -e IMAGE=busybox -v /var/run/docker.sock:/var/run/docker.sock -v /home/$USER/.docker/:/root/.docker/ docker-webhook python docker-hook -t default -c sh ./deploy.sh
+```
+
+Testing:
+```sh
+curl -X POST localhost:8555/default
+```
+
 ## License
 
 [MIT License](http://opensource.org/licenses/MIT)
